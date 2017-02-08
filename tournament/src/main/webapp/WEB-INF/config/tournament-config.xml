@@ -21,7 +21,7 @@
 	<bean id="accountValidator" class="com.fantasy.validators.AccountValidator" />
 	
 	<bean id="accountDao" class="com.fantasy.dao.AccountDAO">
-		<property ref="datasource" name="datasource" />
+		<!--<property ref="datasource" name="datasource" />-->
 	</bean>
 	
 	<bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
