@@ -4,7 +4,7 @@ import javax.validation.constraints.*;
 
 import org.hibernate.validator.constraints.Email;
 
-public class AccountDAO {
+public class Account {
 
 	@Size (min=3, max=15)
 	private String firstname;

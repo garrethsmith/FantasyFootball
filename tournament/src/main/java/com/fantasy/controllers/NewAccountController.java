@@ -5,11 +5,13 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.fantasy.model.AccountDAO;
+import com.fantasy.model.Account;
 import com.fantasy.validators.AccountValidator;
 
 @Controller
@@ -17,14 +19,25 @@ public class NewAccountController {
 		
 	@Autowired(required=true) @Qualifier(value="accountValidator")
 	AccountValidator accountValidator;
+	
 	// http://localhost:8080/tournament/createaccount.html
 	@RequestMapping(value="/createaccount")
-	public String createAccount (@Valid @ModelAttribute ("account") AccountDAO account,
-			BindingResult result) {
-			
-		accountValidator.validate(account, result);
-				
+	public String createAccount (@Valid @ModelAttribute ("account") Account account,
+			BindingResult result, Model model) {
+									
 		return "createaccount";
+	}
+	
+	@RequestMapping(value="/accountcreated", method=RequestMethod.POST)
+	public String accountCreated (@Valid @ModelAttribute ("account") Account account, 
+			BindingResult result, Model model) {
+		
+		accountValidator.validate(account, result);
+		
+		if (result.hasErrors())
+			return "createaccount";
+			
+		return "accountcreated";
 	}
 
 	public AccountValidator getAccountValidator() {

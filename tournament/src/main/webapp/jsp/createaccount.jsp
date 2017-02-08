@@ -16,7 +16,7 @@
 
 <h1>Create new user account</h1>
 
-<form:form commandName="account">	
+<form:form commandName="account" method="post" action="accountcreated.html">	
 	<p>First name: <form:input type="text" path="firstname" name="firstname" />
 	<form:errors path="firstname" cssClass="error" /></p>
 	<p>Surname: <form:input type="text" path="surname" name="surname" />

@@ -19,5 +19,16 @@
 	</bean>
 	
 	<bean id="accountValidator" class="com.fantasy.validators.AccountValidator" />
-
+	
+	<bean id="accountDao" class="com.fantasy.dao.AccountDAO">
+		<property ref="datasource" name="datasource" />
+	</bean>
+	
+	<bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/football"/>
+        <property name="username" value="root"/>
+        <property name="password" value="password"/>
+    </bean>
+	 
 </beans>
