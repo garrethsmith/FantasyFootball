@@ -14,8 +14,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import com.fantasy.com.utils.HibernateSessionFactory;
 import com.fantasy.model.Account;
+import com.fantasy.utils.HibernateSessionFactory;
 
 
 public class AccountDAO {

@@ -1,4 +1,4 @@
-package com.fantasy.com.utils;
+package com.fantasy.utils;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
