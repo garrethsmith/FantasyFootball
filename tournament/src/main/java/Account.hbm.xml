@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-Feb-2017 16:21:20 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.fantasy.model.Account" table="USERS">
+        <id name="email" type="java.lang.String">
+            <column name="EMAIL" />
+            <generator class="assigned" />
+        </id>
+        <property name="surname" type="java.lang.String">
+            <column name="SURNAME" />
+        </property>
+        <property name="teamname" type="java.lang.String">
+            <column name="TEAMNAME" />
+        </property>
+        <property name="firstname" type="java.lang.String">
+            <column name="FIRSTNAME" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -11,11 +11,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fantasy.dao.AccountDAO;
 import com.fantasy.model.Account;
 import com.fantasy.validators.AccountValidator;
 
 @Controller
 public class NewAccountController {
+	
+	@Autowired
+	AccountDAO dao;
 		
 	@Autowired(required=true) @Qualifier(value="accountValidator")
 	AccountValidator accountValidator;
@@ -36,6 +40,8 @@ public class NewAccountController {
 		
 		if (result.hasErrors())
 			return "createaccount";
+		
+		dao.createAccountHb (account);
 			
 		return "accountcreated";
 	}
@@ -47,5 +53,12 @@ public class NewAccountController {
 	public void setAccountValidator(AccountValidator accountValidator) {
 		this.accountValidator = accountValidator;
 	}
-	
+
+	public AccountDAO getDao() {
+		return dao;
+	}
+
+	public void setDao(AccountDAO dao) {
+		this.dao = dao;
+	}
 }

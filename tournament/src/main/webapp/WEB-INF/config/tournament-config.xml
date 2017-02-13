@@ -13,6 +13,8 @@
 	
 	<context:annotation-config />
 	
+	<bean id="sessionFactory" class="com.fantasy.com.utils.HibernateSessionFactory"></bean>
+	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
 		<property name="prefix" value="jsp/" />
 		<property name="suffix" value=".jsp" />
@@ -20,9 +22,7 @@
 	
 	<bean id="accountValidator" class="com.fantasy.validators.AccountValidator" />
 	
-	<bean id="accountDao" class="com.fantasy.dao.AccountDAO">
-		<!--<property ref="datasource" name="datasource" />-->
-	</bean>
+	<bean id="accountDao" class="com.fantasy.dao.AccountDAO" />
 	
 	<bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
