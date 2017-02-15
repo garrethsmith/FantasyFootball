@@ -54,6 +54,12 @@
 		<artifactId>hibernate-core</artifactId>
 		<version>5.2.6.Final</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.json/json -->
+	<dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>20160810</version>
+	</dependency>
   </dependencies>
   <build>
     <finalName>tournament</finalName>

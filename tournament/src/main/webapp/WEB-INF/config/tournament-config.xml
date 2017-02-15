@@ -6,6 +6,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+		
+	<!-- Spring configuration -->
 
 	<mvc:annotation-driven />
 	
@@ -13,16 +15,20 @@
 	
 	<context:annotation-config />
 	
-	<bean id="sessionFactory" class="com.fantasy.utils.HibernateSessionFactory"></bean>
-	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
-		<property name="prefix" value="jsp/" />
-		<property name="suffix" value=".jsp" />
-	</bean>
+	<!-- Validators -->
 	
 	<bean id="accountValidator" class="com.fantasy.validators.AccountValidator" />
 	
+	<!--  Access objects -->
+	
 	<bean id="accountDao" class="com.fantasy.dao.AccountDAO" />
+	<bean id="fixtureDao" class="com.fantasy.dao.FixtureDAO" />
+	
+	<!--  Utils -->
+	
+	<bean id="fixtureLoader" class="com.fantasy.utils.LoadFixtures" init-method="init">
+		<property name="fixtureUrl" value="http://localhost:8080/resources/data,json" />
+	</bean>
 	
 	<bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -30,5 +36,14 @@
         <property name="username" value="root"/>
         <property name="password" value="password"/>
     </bean>
+    
+	<bean id="sessionFactory" class="com.fantasy.utils.HibernateSessionFactory"></bean>
+	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="prefix" value="jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+		
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 	 
 </beans>

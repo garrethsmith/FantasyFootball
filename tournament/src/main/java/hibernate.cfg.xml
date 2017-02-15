@@ -15,5 +15,6 @@
 		<!-- <property name="hbm2ddl.auto">create</property> -->
 		
 		<mapping resource="Account.hbm.xml" />
+		<mapping resource="Fixture.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

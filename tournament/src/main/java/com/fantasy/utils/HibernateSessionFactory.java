@@ -1,5 +1,6 @@
 package com.fantasy.utils;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -17,6 +18,10 @@ public class HibernateSessionFactory {
 			System.out.println("Hibernated exception caught building configuration " + e);
 			throw new ExceptionInInitializerError(e);
 		}
+	}
+	
+	public Session getSession () {
+		return HibernateSessionFactory.getFactory().openSession();
 	}
 
 	public static SessionFactory getFactory() {

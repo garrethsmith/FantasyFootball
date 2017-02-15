@@ -23,7 +23,7 @@ public class AccountDAO {
 	HibernateSessionFactory sessionFactory;
 	
 	private Account getAccountByEmailHb (String email) {	
-		Session session = getSession ();
+		Session session = sessionFactory.getSession ();
 	    Account account = (Account) session.get(Account.class, email); 
 	    session.close(); 
 		
@@ -41,7 +41,7 @@ public class AccountDAO {
 	}
 	
 	public void createAccountHb (Account account) {
-		Session session = getSession ();
+		Session session = sessionFactory.getSession ();
 	    Transaction tx = null;
 	      
 	    try{
@@ -58,16 +58,13 @@ public class AccountDAO {
 	    return;
 	}
 	
-	private Session getSession () {
-		return HibernateSessionFactory.getFactory().openSession();
-	}
-	
 	//////////////////////////////////////////////////////
 	// Below is access to DB via JDBC direct connection //
 	///////////////////// RUBBISH :) /////////////////////
 
 	JdbcTemplate jdbcTemplate;
 	
+	@Deprecated
 	private class AccountRowMapper implements RowMapper<Object> {
 		public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Account account = new Account ();
@@ -79,6 +76,7 @@ public class AccountDAO {
 		}
 	}
 	
+	@Deprecated
 	public void createAccountSql (Account account) {
 		String sql = "INSERT INTO USERS VALUES (?, ?, ?, ?)";
 		
@@ -91,6 +89,7 @@ public class AccountDAO {
 			System.out.println("AccountDAO: Error in updating new account, row number incorrect");
 	}
 	
+	@Deprecated
 	public Account getAccountByEmailSql (String email) {		
 		String sql = "SELECT * FROM USERS WHERE EMAIL = ?";
 		Account retrivedAccount= new Account();
@@ -102,6 +101,7 @@ public class AccountDAO {
 		return retrivedAccount;
 	}
 	
+	@Deprecated
 	public boolean doesAccountExistSql (Account account) {
 		Account a = getAccountByEmailSql(account.getEmail());
 		
