@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-Feb-2017 15:11:18 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.fantasy.model.Fixture" table="FIXTURES">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="homeTeam" type="java.lang.String">
+            <column name="HOMETEAM" />
+        </property>
+        <property name="awayTeam" type="java.lang.String">
+            <column name="AWAYTEAM" />
+        </property>
+        <property name="kickOff" type="java.util.Date">
+            <column name="KICKOFF" />
+        </property>
+        <property name="matchResult" type="java.lang.String">
+            <column name="MATCHRESULT" />
+        </property>
+        <property name="round" type="java.lang.String">
+            <column name="ROUND" />
+        </property>
+    </class>
+</hibernate-mapping>
