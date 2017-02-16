@@ -35,7 +35,7 @@ public class Account {
 	}
 	
 	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+		this.firstname = firstname.trim();
 	}
 	
 	public String getSurname() {
@@ -43,7 +43,7 @@ public class Account {
 	}
 	
 	public void setSurname(String surname) {
-		this.surname = surname;
+		this.surname = surname.trim();
 	}
 	
 	public String getTeamname() {
@@ -51,7 +51,7 @@ public class Account {
 	}
 	
 	public void setTeamname(String teamname) {
-		this.teamname = teamname;
+		this.teamname = teamname.trim();
 	}
 	
 	public String getEmail() {
@@ -59,7 +59,7 @@ public class Account {
 	}
 	
 	public void setEmail(String email) {
-		this.email = email;
+		this.email = email.trim();
 	}
 		
 }

@@ -15,12 +15,12 @@ public class Fixture {
 	
 	public Fixture (int id, String homeTeam, String awayTeam, 
 			Date kickOff, String matchResult, String round) {
-		this.gameid = id;
-		this.homeTeam = homeTeam;
-		this.awayTeam = awayTeam;
-		this.kickOff = kickOff;
-		this.matchResult = matchResult;
-		this.round = round;
+		setGameid(id);
+		setHomeTeam(homeTeam);
+		setAwayTeam(awayTeam);
+		setKickOff(kickOff);
+		setMatchResult(matchResult);
+		setRound(round);
 	}
 	
 	public int getGameid() {
@@ -36,7 +36,7 @@ public class Fixture {
 	}
 	
 	public void setHomeTeam(String homeTeam) {
-		this.homeTeam = homeTeam;
+		this.homeTeam = homeTeam.trim();
 	}
 	
 	public String getAwayTeam() {
@@ -44,7 +44,7 @@ public class Fixture {
 	}
 	
 	public void setAwayTeam(String awayTeam) {
-		this.awayTeam = awayTeam;
+		this.awayTeam = awayTeam.trim();
 	}
 	
 	public Date getKickOff() {
@@ -60,7 +60,7 @@ public class Fixture {
 	}
 	
 	public void setMatchResult(String matchResult) {
-		this.matchResult = matchResult;
+		this.matchResult = matchResult.trim();
 	}
 	
 	public String getRound() {
@@ -68,7 +68,7 @@ public class Fixture {
 	}
 	
 	public void setRound(String round) {
-		this.round = round;
+		this.round = round.trim();
 	}
 	
 	@Override
