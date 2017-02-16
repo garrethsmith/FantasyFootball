@@ -3,7 +3,7 @@
       "rounds":[
          {
             "identifier":"1",
-            "name":"Group Round 1",
+            "name":"Round 1 (JSon)",
             "date_match":"2015-08-23T18:00:00+0200",
             "home_team":"Team 1",
             "away_team":"Team 3",
@@ -11,7 +11,7 @@
          },
          {
             "identifier":"2",
-            "name":"Group Round 2",
+            "name":"Round 2 (JSon)",
             "date_match":"2015-08-30T18:00:00+0200",
             "home_team":"Team 1",
             "away_team":"Team 2",
@@ -19,7 +19,7 @@
          },
          {
             "identifier":"3",
-            "name":"Group Round 3",
+            "name":"Round 3 (JSon)",
             "date_match":"2015-09-12T20:45:00+0200",
             "home_team":"Team 1",
             "away_team":"Team 3",

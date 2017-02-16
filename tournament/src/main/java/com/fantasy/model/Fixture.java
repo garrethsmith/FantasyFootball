@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Fixture {
 	
-	private int id;
+	private int gameid;
 	private String homeTeam;
 	private String awayTeam;
 	private Date kickOff;
@@ -15,7 +15,7 @@ public class Fixture {
 	
 	public Fixture (int id, String homeTeam, String awayTeam, 
 			Date kickOff, String matchResult, String round) {
-		this.id = id;
+		this.gameid = id;
 		this.homeTeam = homeTeam;
 		this.awayTeam = awayTeam;
 		this.kickOff = kickOff;
@@ -23,14 +23,14 @@ public class Fixture {
 		this.round = round;
 	}
 	
-	public int getId() {
-		return id;
+	public int getGameid() {
+		return gameid;
 	}
-	
-	public void setId(int id) {
-		this.id = id;
+
+	public void setGameid(int gameid) {
+		this.gameid = gameid;
 	}
-	
+
 	public String getHomeTeam() {
 		return homeTeam;
 	}
@@ -74,7 +74,7 @@ public class Fixture {
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Fixture) 
-			if (this.id == ((Fixture) obj).getId())
+			if (this.gameid == ((Fixture) obj).getGameid())
 				return true;
 		return false;
 	}

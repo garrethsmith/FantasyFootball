@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 14-Feb-2017 15:11:18 by Hibernate Tools 3.5.0.Final -->
+
 <hibernate-mapping>
     <class name="com.fantasy.model.Fixture" table="FIXTURES">
-        <id name="id" type="int">
-            <column name="ID" />
+        <id name="gameid" type="int">
+            <column name="GAMEID" />
             <generator class="assigned" />
         </id>
         <property name="homeTeam" type="java.lang.String">

@@ -5,7 +5,11 @@ import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.Email;
 
 public class Account {
+	
+	private int id;
 
+	//TODO: Pull all annotated validation and put into AccountValidator
+	
 	@Size (min=3, max=15)
 	private String firstname;
 	
@@ -17,6 +21,14 @@ public class Account {
 	
 	@Size (min=3, max=50) @Email
 	private String email;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getFirstname() {
 		return firstname;

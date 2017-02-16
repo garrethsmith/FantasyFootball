@@ -3,34 +3,39 @@ package com.fantasy.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.List;
 
+import javax.persistence.Query;
 import javax.sql.DataSource;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.fantasy.model.Account;
+import com.fantasy.model.Fixture;
 import com.fantasy.utils.HibernateSessionFactory;
 
 
 public class AccountDAO {
 	
-	HibernateSessionFactory sessionFactory;
+	private HibernateSessionFactory sessionFactory;
 	
-	private Account getAccountByEmailHb (String email) {	
-		Session session = sessionFactory.getSession ();
-	    Account account = (Account) session.get(Account.class, email); 
-	    session.close(); 
+	public List<Account> getAllAccounts (){
+		Session session = sessionFactory.getSession();
 		
-	    if(account == null) return new Account();
-	    else return account;
+		Query q = session.createQuery("from Account");
+		List<?> f= q.getResultList();
+		
+		return (List<Account>) f;
 	}
-		
+	
 	public boolean doesAccountExistHb (Account account) {
 		Account a = getAccountByEmailHb (account.getEmail());
 		
@@ -56,6 +61,19 @@ public class AccountDAO {
 	    }
 	    
 	    return;
+	}
+	
+	private Account getAccountByEmailHb (String email) {	
+		Session session = sessionFactory.getSession ();
+	    //Account account = (Account) session.get(Account.class, email); 
+	    //session.close(); 
+		
+	    Criteria critera = session.createCriteria(Account.class).add(Restrictions.eq("email", email));
+	    Object obj = critera.uniqueResult();
+	    session.close(); 
+	    
+	    if(obj == null) return new Account();
+	    else return ((Account)obj);
 	}
 	
 	//////////////////////////////////////////////////////

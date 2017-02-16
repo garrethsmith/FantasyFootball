@@ -3,15 +3,12 @@ package com.fantasy.utils;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.net.URL;
 import java.nio.charset.Charset;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -34,7 +31,7 @@ public class LoadFixtures {
 			// Assumption loaded fixtures are in unloaded through the json
 			for (Fixture f: loadedfixtures) {
 				if (unloadedFixtures.contains(f)) {
-					System.out.println("Found match... " + f.getId());
+					System.out.println("Found match... " + f.getGameid());
 					unloadedFixtures.remove(f);
 				}
 			}

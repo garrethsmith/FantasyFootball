@@ -19,7 +19,7 @@ public class FixtureDAO {
 	public void loadFixtures (List<Fixture> fixtureList) {
 		System.out.println("Loading fixtures not in DB");
 		for (Fixture f: fixtureList) {
-			System.out.println("Entering id " + f.getId());
+			System.out.println("Entering id " + f.getGameid());
 		}
 		
 		Session session = sessionFactory.getSession ();

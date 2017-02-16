@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fantasy.dao.AccountDAO;
 import com.fantasy.model.Account;
+import com.fantasy.utils.KeyGenerator;
 import com.fantasy.validators.AccountValidator;
 
 @Controller
@@ -23,6 +24,9 @@ public class NewAccountController {
 		
 	@Autowired(required=true) @Qualifier(value="accountValidator")
 	AccountValidator accountValidator;
+	
+	@Autowired
+	KeyGenerator generator;
 	
 	// http://localhost:8080/tournament/createaccount.html
 	@RequestMapping(value="/createaccount")
@@ -41,6 +45,7 @@ public class NewAccountController {
 		if (result.hasErrors())
 			return "createaccount";
 		
+		account.setId(generator.generateAccountId());
 		dao.createAccountHb (account);
 			
 		return "accountcreated";
@@ -61,4 +66,13 @@ public class NewAccountController {
 	public void setDao(AccountDAO dao) {
 		this.dao = dao;
 	}
+
+	public KeyGenerator getGenerator() {
+		return generator;
+	}
+
+	public void setGenerator(KeyGenerator generator) {
+		this.generator = generator;
+	}
+	
 }

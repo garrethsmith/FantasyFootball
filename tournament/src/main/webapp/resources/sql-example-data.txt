@@ -1,0 +1,100 @@
+
+Table: users
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int (11)    | NO   | PRI | NULL    |       |
+| EMAIL     | varchar(50) | NO   |     | NULL    |       |
+| SURNAME   | varchar(15) | YES  |     | NULL    |       |
+| FIRSTNAME | varchar(15) | YES  |     | NULL    |       |
+| TEAMNAME  | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+CREATE TABLE users (id INT, 
+		    email VARCHAR(50),
+		    surname VARCHAR(20),
+		    firstname VARCHAR(20),
+		    teamname VARCHAR(20),
+		    PRIMARY KEY (id));
+
+insert into users values (10, 'test1@test.com', 'Surname1', 'Firstname1', 'Teamname1');
+insert into users values (20, 'test2@test.com', 'Surname2', 'Firstname2', 'Teamname2');
+insert into users values (30, 'test3@test.com', 'Surname3', 'Firstname3', 'Teamname3');
+
+Table: fixtures
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| gameid      | int(11)     | YES  | PRI | NULL    |       |
+| homeTeam    | varchar(20) | YES  |     | NULL    |       |
+| awayTeam    | varchar(20) | YES  |     | NULL    |       |
+| kickOff     | date        | YES  |     | NULL    |       |
+| matchResult | varchar(4)  | YES  |     | NULL    |       |
+| round       | varchar(30) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+
+CREATE TABLE fixtures (gameid INT, 
+		       homeTeam VARCHAR(20),
+		       awayTeam VARCHAR(20),
+		       kickOff  DATE,
+		       matchResult VARCHAR(4),
+		       round VARCHAR(30),
+		       PRIMARY KEY (gameid));
+
+
+insert into fixtures values (1, "Team 1", "Team 2", '2015-08-23 18:00:00', "1-1", "Round 1 (insert)");
+insert into fixtures values (4, "Team 2", "Team 1", "2017-08-24 18:00:00",    "", "Round 2 (insert)");
+insert into fixtures values (5, "Team 2", "Team 3", "2017-08-25 18:00:00",    "", "Round 2 (insert)");
+insert into fixtures values (3, "Team 2", "Team 1", "2017-08-26 18:00:00",    "", "Round 2 (insert)");
+
+Table: predictions
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| gameid      | int(11)     | YES  | PRI | NULL    |       |
+| id          | int(11)     | YES  | PRI | NULL    |       |
+| preditcion  | varchar(4)  | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+
+CREATE TABLE predictions (id INT, 
+			gameid INT,
+		    preditcion VARCHAR(4),
+		    PRIMARY KEY (id, gameid));
+		    
+***************** SQL TO EXECUTE AND RESET TABLES
+
+drop table users;
+drop table fixtures;
+drop table predictions;
+
+CREATE TABLE users (id INT, 
+		    email VARCHAR(50),
+		    surname VARCHAR(20),
+		    firstname VARCHAR(20),
+		    teamname VARCHAR(20),
+		    PRIMARY KEY (id));
+
+insert into users values (10, 'test1@test.com', 'Surname1', 'Firstname1', 'Teamname1');
+insert into users values (20, 'test2@test.com', 'Surname2', 'Firstname2', 'Teamname2');
+insert into users values (30, 'test3@test.com', 'Surname3', 'Firstname3', 'Teamname3');
+
+CREATE TABLE fixtures (gameid INT, 
+		       homeTeam VARCHAR(20),
+		       awayTeam VARCHAR(20),
+		       kickOff  DATE,
+		       matchResult VARCHAR(4),
+		       round VARCHAR(30),
+		       PRIMARY KEY (gameid));
+
+insert into fixtures values (1, "Team 1", "Team 2", '2015-08-23 18:00:00', "1-1", "Round 1 (insert)");
+insert into fixtures values (4, "Team 2", "Team 1", "2017-08-24 18:00:00",    "", "Round 2 (insert)");
+insert into fixtures values (5, "Team 2", "Team 3", "2017-08-25 18:00:00",    "", "Round 2 (insert)");
+insert into fixtures values (3, "Team 2", "Team 1", "2017-08-26 18:00:00",    "", "Round 2 (insert)");
+
+CREATE TABLE predictions (id INT, 
+			gameid INT,
+		    preditcion VARCHAR(4),
+		    PRIMARY KEY (id, gameid));
+
+
+
