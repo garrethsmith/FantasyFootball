@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<h1>My predictions</h1>
+<h1>Display fixtures</h1>
 
 <table>
 	<tr>

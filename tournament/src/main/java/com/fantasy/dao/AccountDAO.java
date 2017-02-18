@@ -19,7 +19,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.fantasy.model.Account;
-import com.fantasy.model.Fixture;
 import com.fantasy.utils.HibernateSessionFactory;
 
 
@@ -69,6 +68,17 @@ public class AccountDAO {
 	    //session.close(); 
 		
 	    Criteria critera = session.createCriteria(Account.class).add(Restrictions.eq("email", email));
+	    Object obj = critera.uniqueResult();
+	    session.close(); 
+	    
+	    if(obj == null) return new Account();
+	    else return ((Account)obj);
+	}
+	
+	public Account getAccountById (int id) {	
+		Session session = sessionFactory.getSession ();
+		
+	    Criteria critera = session.createCriteria(Account.class).add(Restrictions.eq("id", id));
 	    Object obj = critera.uniqueResult();
 	    session.close(); 
 	    

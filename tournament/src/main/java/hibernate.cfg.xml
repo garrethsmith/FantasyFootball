@@ -16,5 +16,6 @@
 		
 		<mapping resource="Account.hbm.xml" />
 		<mapping resource="Fixture.hbm.xml" />
+		<mapping resource="Prediction.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

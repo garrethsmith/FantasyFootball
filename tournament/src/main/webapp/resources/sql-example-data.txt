@@ -17,10 +17,6 @@ CREATE TABLE users (id INT,
 		    teamname VARCHAR(20),
 		    PRIMARY KEY (id));
 
-insert into users values (10, 'test1@test.com', 'Surname1', 'Firstname1', 'Teamname1');
-insert into users values (20, 'test2@test.com', 'Surname2', 'Firstname2', 'Teamname2');
-insert into users values (30, 'test3@test.com', 'Surname3', 'Firstname3', 'Teamname3');
-
 Table: fixtures
 +-------------+-------------+------+-----+---------+-------+
 | Field       | Type        | Null | Key | Default | Extra |
@@ -40,12 +36,6 @@ CREATE TABLE fixtures (gameid INT,
 		       matchResult VARCHAR(4),
 		       round VARCHAR(30),
 		       PRIMARY KEY (gameid));
-
-
-insert into fixtures values (1, "Team 1", "Team 2", '2015-08-23 18:00:00', "1-1", "Round 1 (insert)");
-insert into fixtures values (4, "Team 2", "Team 1", "2017-08-24 18:00:00",    "", "Round 2 (insert)");
-insert into fixtures values (5, "Team 2", "Team 3", "2017-08-25 18:00:00",    "", "Round 2 (insert)");
-insert into fixtures values (3, "Team 2", "Team 1", "2017-08-26 18:00:00",    "", "Round 2 (insert)");
 
 Table: predictions
 +-------------+-------------+------+-----+---------+-------+
@@ -93,8 +83,10 @@ insert into fixtures values (3, "Team 2", "Team 1", "2017-08-26 18:00:00",    ""
 
 CREATE TABLE predictions (id INT, 
 			gameid INT,
-		    preditcion VARCHAR(4),
+		    prediction VARCHAR(4),
 		    PRIMARY KEY (id, gameid));
 
+insert into predictions values (20, 4, "1-2");
+insert into predictions values (20, 1, "2-3");
 
 

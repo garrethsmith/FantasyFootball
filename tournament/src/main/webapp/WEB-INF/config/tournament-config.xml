@@ -23,6 +23,7 @@
 	
 	<bean id="accountDao" class="com.fantasy.dao.AccountDAO" />
 	<bean id="fixtureDao" class="com.fantasy.dao.FixtureDAO" />
+	<bean id="predictionDao" class="com.fantasy.dao.PredictionDAO" />
 	
 	<!--  Utils -->
 	

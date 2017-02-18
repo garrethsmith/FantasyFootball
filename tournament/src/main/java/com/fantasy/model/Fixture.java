@@ -1,6 +1,8 @@
 package com.fantasy.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Fixture {
 	
@@ -10,6 +12,7 @@ public class Fixture {
 	private Date kickOff;
 	private String matchResult;
 	private String round;
+	private List<Prediction> predictions = new ArrayList<Prediction>();
 	
 	public Fixture () {}
 	
@@ -71,6 +74,14 @@ public class Fixture {
 		this.round = round.trim();
 	}
 	
+	public List<Prediction> getPredictions() {
+		return predictions;
+	}
+
+	public void setPredictions(List<Prediction> predictions) {
+		this.predictions = predictions;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Fixture) 

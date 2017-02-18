@@ -43,6 +43,7 @@ public class FixtureDAO {
 				
 		Query q = session.createQuery("from Fixture");
 		List<?> f= q.getResultList();
+		session.close();
 		
 		return (List<Fixture>) f;
 	}
