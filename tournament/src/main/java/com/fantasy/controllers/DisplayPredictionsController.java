@@ -2,6 +2,8 @@ package com.fantasy.controllers;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,7 @@ public class DisplayPredictionsController {
 	// http://localhost:8080/tournament/displayPredictions.html
 	@RequestMapping(value="/displayPredictions", method=RequestMethod.GET)
 	public String accountCreated (Model model) {
-		List<Fixture> fixtures = fixtureDao.getAllFixtures();
+		List<Fixture> fixtures = fixtureDao.getAllFixturesSorted();
 		List<Prediction> predictions = predictionDao.getAllPredictions();
 		
 		// Populated predictions for each fixture
@@ -42,6 +44,7 @@ public class DisplayPredictionsController {
 			
 			for (Prediction p: predictions){
 				if (gameid == p.getGameid()) {
+					p.setName(accountDao.getAccountById(p.getId()).getFirstname());
 					fixturePredictions.add(p);
 				}
 			}
@@ -49,9 +52,10 @@ public class DisplayPredictionsController {
 			f.setPredictions(fixturePredictions);
 		}
 		
-		model.addAttribute("predictions", fixtures);
+		model.addAttribute("fixtures", fixtures);
 		//TODO: Assume user id 20 for now need to generate from login which doesn't yet exist !
 		int id = 20;
+		model.addAttribute("users", accountDao.getAllAccounts());
 		model.addAttribute("user", accountDao.getAccountById(id));
 		
 		return "displayPredictions";

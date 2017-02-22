@@ -1,5 +1,7 @@
 package com.fantasy.dao;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -38,14 +40,22 @@ public class FixtureDAO {
 		}
 	}
 	
-	public List<Fixture> getAllFixtures () {
+	private class FixtureComparator implements Comparator<Fixture> {
+	    public int compare(Fixture f1, Fixture f2) {
+	        return f1.getKickOff().compareTo(f2.getKickOff());
+	    }
+	}
+	
+	public List<Fixture> getAllFixturesSorted () {
 		Session session = sessionFactory.getSession();
 				
 		Query q = session.createQuery("from Fixture");
-		List<?> f= q.getResultList();
+		List<Fixture> f = (List<Fixture>) q.getResultList();
 		session.close();
 		
-		return (List<Fixture>) f;
+		Collections.sort(f, new FixtureComparator());
+		
+		return f;
 	}
 
 	public HibernateSessionFactory getSessionFactory() {

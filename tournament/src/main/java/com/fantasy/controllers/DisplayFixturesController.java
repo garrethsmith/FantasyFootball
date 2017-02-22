@@ -19,7 +19,7 @@ public class DisplayFixturesController {
 	// http://localhost:8080/tournament/displayFixtures.html
 	@RequestMapping(value="/displayFixtures", method=RequestMethod.GET)
 	public String accountCreated (Model model) {
-		Fixtures fixtureList = new Fixtures(fixtureDao.getAllFixtures());
+		Fixtures fixtureList = new Fixtures(fixtureDao.getAllFixturesSorted());
 		model.addAttribute("fixtures", fixtureList);	
 		return "displayFixtures";
 	}

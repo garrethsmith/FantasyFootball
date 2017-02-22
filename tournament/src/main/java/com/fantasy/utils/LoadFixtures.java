@@ -24,7 +24,7 @@ public class LoadFixtures {
 	private FixtureDAO dao;
 	
 	public void init () throws Exception {
-		List<Fixture> loadedfixtures = dao.getAllFixtures();
+		List<Fixture> loadedfixtures = dao.getAllFixturesSorted();
 		List<Fixture> unloadedFixtures = getFixtures();
 		
 		if (loadedfixtures != null && unloadedFixtures != null) {

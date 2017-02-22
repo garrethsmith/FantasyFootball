@@ -6,11 +6,20 @@ import java.util.Objects;
 public class Prediction implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-		
+	
+	private String name;
 	private int id;
 	private int gameid;
 	private String prediction;
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public int getId() {
 		return id;
 	}

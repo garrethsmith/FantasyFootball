@@ -9,31 +9,63 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Displaying Fixtures</title>
 <style type="text/css">
-	td {width:175px}
+	th {width:125px}
 </style>
 </head>
 <body>
-
-<h1>My predictions</h1>
-
-<table>
-	<tr>
-		<td>Fixture</td>
-		<td>Kick Off</td>
-		<td>Result</td>
-		<td>Round</td>
-	</tr>
-	<c:forEach var="fixture" items="${fixtures.fixtures}">
+	
+	<h1>My predictions</h1>
+	
+	<table>
 		<tr>
-			<td><c:out value="${fixture.homeTeam}" /> v <c:out value="${fixture.awayTeam}" /></td>
-			<td><c:out value="${fixture.kickOff}" /></td>
-			<td><c:out value="${fixture.matchResult}" /></td>
-			<td><c:out value="${fixture.round}" /></td>
+			<th>User</th>
+			<c:forEach var="fixture" items="${fixtures}">
+				<th><c:out value="${fixture.homeTeam}" /> vs <c:out value="${fixture.awayTeam}" /><br/>
+					<c:out value="${fixture.kickOff}" /></th>
+			</c:forEach>
 		</tr>
-	</c:forEach>
-</table>
-
-
+		<tr>
+			<td><c:out value="${user.firstname}" /></td>
+			<c:forEach var="fixture" items="${fixtures}">
+				<td>
+					<c:set var="flag" value="false" />
+					<c:forEach var="prediction" items="${fixture.predictions}">
+						<c:choose>
+	  						<c:when test="${prediction.id == user.id}">
+	  							<c:set var="flag" value="true" />
+	  							<p><c:out value="${prediction.prediction}" /></p>
+							</c:when>
+						</c:choose>
+					</c:forEach>
+					<c:if test="${!flag}">
+						<c:set var="flag" value="false" />
+						<p>n/a</p>
+					</c:if>	
+				</td>
+			</c:forEach>
+		</tr>
+		<c:forEach var="u" items="${users}">
+			<tr>
+				<td><c:out value="${user.firstname}" /></td>
+				<c:forEach var="fixture" items="${fixtures}">
+					<td>
+						<c:forEach var="prediction" items="${fixture.predictions}">
+							<c:choose>
+		  						<c:when test="${prediction.id == u.id}">
+		  							<c:set var="flag" value="true" />
+		  							<p><c:out value="${prediction.prediction}" /></p>
+								</c:when>
+							</c:choose>
+						</c:forEach>
+						<c:if test="${!flag}">
+							<c:set var="flag" value="false" />
+							<p>n/a</p>
+						</c:if>
+					</td>	
+				</c:forEach>
+			</tr>
+		</c:forEach>
+	</table>
 
 </body>
 </html>
