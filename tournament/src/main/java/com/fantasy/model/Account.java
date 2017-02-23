@@ -21,6 +21,12 @@ public class Account {
 	
 	@Size (min=3, max=50) @Email
 	private String email;
+	
+	public Account () {}
+	
+	public Account (String email) {
+		this.email = email;
+	}
 
 	public int getId() {
 		return id;

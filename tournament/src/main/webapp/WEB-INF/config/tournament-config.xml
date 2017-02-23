@@ -18,6 +18,7 @@
 	<!-- Validators -->
 	
 	<bean id="accountValidator" class="com.fantasy.validators.AccountValidator" />
+	<bean id="loginValidator" class="com.fantasy.validators.LoginValidator" />
 	
 	<!--  Access objects -->
 	

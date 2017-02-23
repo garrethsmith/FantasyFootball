@@ -62,7 +62,7 @@ public class AccountDAO {
 	    return;
 	}
 	
-	private Account getAccountByEmailHb (String email) {	
+	public Account getAccountByEmailHb (String email) {	
 		Session session = sessionFactory.getSession ();
 	    //Account account = (Account) session.get(Account.class, email); 
 	    //session.close(); 

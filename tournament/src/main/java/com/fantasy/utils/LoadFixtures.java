@@ -31,7 +31,6 @@ public class LoadFixtures {
 			// Assumption loaded fixtures are in unloaded through the json
 			for (Fixture f: loadedfixtures) {
 				if (unloadedFixtures.contains(f)) {
-					System.out.println("Found match... " + f.getGameid());
 					unloadedFixtures.remove(f);
 				}
 			}

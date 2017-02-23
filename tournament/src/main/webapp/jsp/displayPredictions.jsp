@@ -32,66 +32,73 @@
 	</style>
 </head>
 <body>
-	
-	<h1>My predictions</h1>
-	
-	<table>
-		<tr>
-			<th class="firstcol">User</th>
-			<c:forEach var="fixture" items="${fixtures}">
-				<th><c:out value="${fixture.homeTeam}" /> vs <c:out value="${fixture.awayTeam}" /></th>
-			</c:forEach>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<c:forEach var="fixture" items="${fixtures}">
-				<td><c:out value="${fixture.kickOff}" /></td>
-			</c:forEach>
-		</tr>
-		<tr>
-			<td><c:out value="${user.firstname}" /></td>
-			<c:forEach var="fixture" items="${fixtures}">
-				<td>
-					<c:set var="flag" value="false" />
-					<c:forEach var="prediction" items="${fixture.predictions}">
-						<c:choose>
-	  						<c:when test="${prediction.id == user.id}">
-	  							<c:set var="flag" value="true" />
-	  							<p><strong><c:out value="${prediction.prediction}" /></strong></p>
-							</c:when>
-						</c:choose>
-					</c:forEach>
-					<c:if test="${!flag}">
-						<c:set var="flag" value="false" />
-						<p class="noprediction">n/a</p>
-					</c:if>	
-				</td>
-			</c:forEach>
-		</tr>
-		<c:forEach var="u" items="${users}">
-		  	<c:if test="${user.id != u.id}">
+
+	<c:choose>
+	  	<c:when test="${empty user}">
+	  		<p>Please <a href="login.html">login</a></p>
+		</c:when>
+		<c:otherwise>
+			<h1>My predictions</h1>
+		
+			<table>
 				<tr>
-					<td><c:out value="${u.firstname}" /></td>
+					<th class="firstcol">User</th>
 					<c:forEach var="fixture" items="${fixtures}">
-						<c:set var="flag" value="false" />
+						<th><c:out value="${fixture.homeTeam}" /> vs <c:out value="${fixture.awayTeam}" /></th>
+					</c:forEach>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<c:forEach var="fixture" items="${fixtures}">
+						<td><c:out value="${fixture.kickOff}" /></td>
+					</c:forEach>
+				</tr>
+				<tr>
+					<td><c:out value="${user.firstname}" /></td>
+					<c:forEach var="fixture" items="${fixtures}">
 						<td>
+							<c:set var="flag" value="false" />
 							<c:forEach var="prediction" items="${fixture.predictions}">
 								<c:choose>
-			  						<c:when test="${prediction.id == u.id}">
-				  						<c:set var="flag" value="true" />
-				  						<p><strong><c:out value="${prediction.prediction}" /></strong></p>
+			  						<c:when test="${prediction.id == user.id}">
+			  							<c:set var="flag" value="true" />
+			  							<p><strong><c:out value="${prediction.prediction}" /></strong></p>
 									</c:when>
 								</c:choose>
 							</c:forEach>
 							<c:if test="${!flag}">
+								<c:set var="flag" value="false" />
 								<p class="noprediction">n/a</p>
-							</c:if>
-						</td>	
+							</c:if>	
+						</td>
 					</c:forEach>
 				</tr>
-			</c:if>
-		</c:forEach>
-	</table>
+				<c:forEach var="u" items="${users}">
+				  	<c:if test="${user.id != u.id}">
+						<tr>
+							<td><c:out value="${u.firstname}" /></td>
+							<c:forEach var="fixture" items="${fixtures}">
+								<c:set var="flag" value="false" />
+								<td>
+									<c:forEach var="prediction" items="${fixture.predictions}">
+										<c:choose>
+					  						<c:when test="${prediction.id == u.id}">
+						  						<c:set var="flag" value="true" />
+						  						<p><strong><c:out value="${prediction.prediction}" /></strong></p>
+											</c:when>
+										</c:choose>
+									</c:forEach>
+									<c:if test="${!flag}">
+										<p class="noprediction">n/a</p>
+									</c:if>
+								</td>	
+							</c:forEach>
+						</tr>
+					</c:if>
+				</c:forEach>
+			</table>
+		</c:otherwise>
+	</c:choose>
 
 </body>
 </html>

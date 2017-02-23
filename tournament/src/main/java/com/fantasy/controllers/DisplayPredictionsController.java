@@ -51,12 +51,11 @@ public class DisplayPredictionsController {
 			
 			f.setPredictions(fixturePredictions);
 		}
-		
+				
 		model.addAttribute("fixtures", fixtures);
-		//TODO: Assume user id 20 for now need to generate from login which doesn't yet exist !
-		int id = 20;
 		model.addAttribute("users", accountDao.getAllAccounts());
-		model.addAttribute("user", accountDao.getAccountById(id));
+		// Should be set through login screen now
+		// model.addAttribute("user", accountDao.getAccountById(id));
 
 		return "displayPredictions";
 	}
