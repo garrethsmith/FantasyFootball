@@ -27,26 +27,24 @@ public class LoginController {
 	
 	// http://localhost:8080/tournament/login.html
 	@RequestMapping(value="/login")
-	public String createAccount (@Valid @ModelAttribute ("login") Login login,
+	public String showLogin (@Valid @ModelAttribute ("login") Login login,
 			BindingResult result, Model model) {
-		
-		System.out.println("Show login");
-									
+											
 		return "login";
 	}
 	
 	@RequestMapping(value="/displayFixtures", method=RequestMethod.POST)
-	public String accountCreated (@Valid @ModelAttribute ("login") Login login, 
+	public String doLogin (@Valid @ModelAttribute ("login") Login login, 
 			BindingResult result, Model model) {
-		
+				
 		loginValidator.validate(login, result);
 		
 		if (result.hasErrors())
 			return "login";
 		
 		model.addAttribute("user", accountDao.getAccountByEmailHb(login.getUsername()));
-					
-		return "displayFixtures";
+		
+		return "redirect:displayFixtures.html";
 	}
 
 	public void setLoginValidator(LoginValidator loginValidator) {

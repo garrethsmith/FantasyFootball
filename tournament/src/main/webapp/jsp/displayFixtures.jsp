@@ -13,27 +13,25 @@
 </style>
 </head>
 <body>
-
-<h1>Display fixtures</h1>
-
-<table>
-	<tr>
-		<td>Fixture</td>
-		<td>Kick Off</td>
-		<td>Result</td>
-		<td>Round</td>
-	</tr>
-	<c:forEach var="fixture" items="${fixtures.fixtures}">
+	
+	<h1>Display fixtures</h1>
+	
+	<table>
 		<tr>
-			<td><c:out value="${fixture.homeTeam}" /> v <c:out value="${fixture.awayTeam}" /></td>
-			<td><c:out value="${fixture.kickOff}" /></td>
-			<td><c:out value="${fixture.matchResult}" /></td>
-			<td><c:out value="${fixture.round}" /></td>
+			<td>Fixture</td>
+			<td>Kick Off</td>
+			<td>Result</td>
+			<td>Round</td>
 		</tr>
-	</c:forEach>
-</table>
-
-
+		<c:forEach var="fixture" items="${fixtures.fixtures}">
+			<tr>
+				<td><c:out value="${fixture.homeTeam}" /> v <c:out value="${fixture.awayTeam}" /></td>
+				<td><c:out value="${fixture.kickOff}" /></td>
+				<td><c:out value="${fixture.matchResult}" /></td>
+				<td><c:out value="${fixture.round}" /></td>
+			</tr>
+		</c:forEach>
+	</table>
 
 </body>
 </html>

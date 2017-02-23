@@ -19,6 +19,7 @@
 <form:form commandName="login" method="post" action="displayFixtures.html">	
 	<p>Username: <form:input type="text" path="username" name="username" />
 	<form:errors path="username" cssClass="error" /></p>
+	<p>No password needed for now</p>
 	<p>Password: <form:input type="text" path="password" name="password" />
 	<form:errors path="password" cssClass="error" /></p>
 	<p><input type="submit" value="create" /></p>

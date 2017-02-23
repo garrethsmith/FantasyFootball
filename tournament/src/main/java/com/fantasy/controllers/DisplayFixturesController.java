@@ -18,9 +18,10 @@ public class DisplayFixturesController {
 	
 	// http://localhost:8080/tournament/displayFixtures.html
 	@RequestMapping(value="/displayFixtures", method=RequestMethod.GET)
-	public String accountCreated (Model model) {
+	public String displayFixtures (Model model) {
+		System.out.println("displayFixtures");
 		Fixtures fixtureList = new Fixtures(fixtureDao.getAllFixturesSorted());
-		model.addAttribute("fixtures", fixtureList);	
+		model.addAttribute("fixtures", fixtureList);		
 		return "displayFixtures";
 	}
 
