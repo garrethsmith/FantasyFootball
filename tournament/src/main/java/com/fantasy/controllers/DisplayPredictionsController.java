@@ -57,7 +57,7 @@ public class DisplayPredictionsController {
 		int id = 20;
 		model.addAttribute("users", accountDao.getAllAccounts());
 		model.addAttribute("user", accountDao.getAccountById(id));
-		
+
 		return "displayPredictions";
 	}
 
