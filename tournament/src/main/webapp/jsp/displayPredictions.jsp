@@ -34,7 +34,6 @@
 		
 		td.userprediction { background: #e3f0f4; }
 		td.userpredictionchange { background: #ffa500; }
-		
 	</style>
 	
 	<script type="text/javascript">
@@ -47,21 +46,15 @@
 				xmlhttp = new ActiveXObject ("Microsoft.XMLHTTP");
 			} 
 			
-			document.getElementById('updatePredictions').addEventListener('click', updatePredictions, false);
 			var userpredictions = document.getElementsByClassName("userprediction");
-			for (var i = 0; i < userpredictions.length; i++) {
+			for (var i=0; i<userpredictions.length; i++) {
 				userpredictions[i].addEventListener('focusout', updateScore, false);
 			}
 		})
 		
-		function updatePredictions () {
-			var userrow = $('td.userrow');	
-			userrow.addClass('userpredictionchange');
-		}
-		
 		function updateScore () {
-			var mydiv = document.getElementById("results");
-		    mydiv.innerHTML += "Called updateScore <br/>";
+			$("div#results").append("<p>User/Game ID "  + this.id + " Value " + this.value + "</p>");
+			
 		}
 	</script>
 	
@@ -107,7 +100,6 @@
 							</c:if>	
 						</td>
 					</c:forEach>
-					<td><button id="updatePredictions">Update</button></td>
 				</tr>
 				<c:forEach var="u" items="${users}">
 				  	<c:if test="${user.id != u.id}">
@@ -129,7 +121,6 @@
 									</c:if>
 								</td>	
 							</c:forEach>
-							<td>&nbsp;</td>
 						</tr>
 					</c:if>
 				</c:forEach>
