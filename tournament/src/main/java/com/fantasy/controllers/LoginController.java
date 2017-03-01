@@ -44,7 +44,7 @@ public class LoginController {
 		
 		model.addAttribute("user", accountDao.getAccountByEmailHb(login.getUsername()));
 		
-		return "redirect:displayFixtures.html";
+		return "redirect:displayPredictions.html";
 	}
 
 	public void setLoginValidator(LoginValidator loginValidator) {

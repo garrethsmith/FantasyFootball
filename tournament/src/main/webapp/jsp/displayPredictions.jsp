@@ -8,6 +8,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Displaying Fixtures</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	
 	<style type="text/css">
 		table { color: #333; 
 			width: 98%;
@@ -29,7 +31,40 @@
 		td { background: #FAFAFA;
 			text-align: center; 
 		}
+		
+		td.userprediction { background: #e3f0f4; }
+		td.userpredictionchange { background: #ffa500; }
+		
 	</style>
+	
+	<script type="text/javascript">
+		var xmlhttp;
+	
+		$(document).ready (function () {
+			if (window.XMLHttpRequest) {
+				xmlhttp = new XMLHttpRequest();
+			} else {
+				xmlhttp = new ActiveXObject ("Microsoft.XMLHTTP");
+			} 
+			
+			document.getElementById('updatePredictions').addEventListener('click', updatePredictions, false);
+			var userpredictions = document.getElementsByClassName("userprediction");
+			for (var i = 0; i < userpredictions.length; i++) {
+				userpredictions[i].addEventListener('focusout', updateScore, false);
+			}
+		})
+		
+		function updatePredictions () {
+			var userrow = $('td.userrow');	
+			userrow.addClass('userpredictionchange');
+		}
+		
+		function updateScore () {
+			var mydiv = document.getElementById("results");
+		    mydiv.innerHTML += "Called updateScore <br/>";
+		}
+	</script>
+	
 </head>
 <body>
 
@@ -53,25 +88,26 @@
 						<td><c:out value="${fixture.kickOff}" /></td>
 					</c:forEach>
 				</tr>
-				<tr>
-					<td><c:out value="${user.firstname}" /></td>
+				<tr class="userrow">
+					<td><c:out value="${user.firstname}"/></td>
 					<c:forEach var="fixture" items="${fixtures}">
-						<td>
+						<td class="userrow">
 							<c:set var="flag" value="false" />
 							<c:forEach var="prediction" items="${fixture.predictions}">
 								<c:choose>
 			  						<c:when test="${prediction.id == user.id}">
 			  							<c:set var="flag" value="true" />
-			  							<p><strong><c:out value="${prediction.prediction}" /></strong></p>
+										<input id="<c:out value="${user.id}" />-<c:out value="${fixture.gameid}" />" class="userprediction" value="<c:out value="${prediction.prediction}" />" />
 									</c:when>
 								</c:choose>
 							</c:forEach>
 							<c:if test="${!flag}">
 								<c:set var="flag" value="false" />
-								<p class="noprediction">n/a</p>
+								<p id='<c:out value="${user.id}" />-<c:out value="${fixture.gameid}" />' class="noprediction">n/a</p>
 							</c:if>	
 						</td>
 					</c:forEach>
+					<td><button id="updatePredictions">Update</button></td>
 				</tr>
 				<c:forEach var="u" items="${users}">
 				  	<c:if test="${user.id != u.id}">
@@ -84,21 +120,24 @@
 										<c:choose>
 					  						<c:when test="${prediction.id == u.id}">
 						  						<c:set var="flag" value="true" />
-						  						<p><strong><c:out value="${prediction.prediction}" /></strong></p>
+						  						<p id='<c:out value="${u.id}" />-<c:out value="${fixture.gameid}" />'><strong><c:out value="${prediction.prediction}" /></strong></p>
 											</c:when>
 										</c:choose>
 									</c:forEach>
 									<c:if test="${!flag}">
-										<p class="noprediction">n/a</p>
+										<p  id='<c:out value="${u.id}" />-<c:out value="${fixture.gameid}" />' class="noprediction">n/a</p>
 									</c:if>
 								</td>	
 							</c:forEach>
+							<td>&nbsp;</td>
 						</tr>
 					</c:if>
 				</c:forEach>
 			</table>
 		</c:otherwise>
 	</c:choose>
+	<p>&nbsp;</p>
+	<div id="results"></div>
 
 </body>
 </html>
