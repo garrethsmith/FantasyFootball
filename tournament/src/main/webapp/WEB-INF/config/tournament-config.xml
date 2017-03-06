@@ -19,6 +19,7 @@
 	
 	<bean id="accountValidator" class="com.fantasy.validators.AccountValidator" />
 	<bean id="loginValidator" class="com.fantasy.validators.LoginValidator" />
+	<bean id="predictionValidator" class="com.fantasy.validators.PredictionValidator" />
 	
 	<!--  Access objects -->
 	

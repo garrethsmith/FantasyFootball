@@ -4,9 +4,13 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fantasy.model.Account;
 import com.fantasy.model.Prediction;
 import com.fantasy.utils.HibernateSessionFactory;
 
@@ -23,6 +27,22 @@ public class PredictionDAO {
 		session.close();
 		
 		return ((List<Prediction>) p);
+	}
+	
+	public boolean updatePrediction(Prediction prediction) {
+		Session session = sessionFactory.getSession ();
+		Transaction tx = session.beginTransaction();
+		
+		Prediction find = new Prediction(prediction.getId(), prediction.getGameid());
+		Prediction p = session.load(Prediction.class, find);
+		String oldValue = p.getPrediction();
+		p.setPrediction(prediction.getPrediction());
+		tx.commit();
+		
+		System.out.println("updatePrediction: prediction updated for user " + p.getId() + " game " + p.getGameid() + 
+				" from " + oldValue + " to " + prediction.getPrediction());
+		
+		return true;
 	}
 	
 	public HibernateSessionFactory getSessionFactory() {

@@ -9,77 +9,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Displaying Fixtures</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	
-	<style type="text/css">
-		table { color: #333; 
-			width: 98%;
-			border-collapse:
-			collapse; border-spacing: 0;
-		}
-			
-		td, th { border: 1px solid #CCC; 
-			height: 30px; } 
-			
-		.firstcol { width: 100px; }
-		
-		.noprediction { color: #C0C0C0; }
-			
-		th { background: #F3F3F3; 
-			font-weight: bold;
-		}
-			
-		td { background: #FAFAFA;
-			text-align: center; 
-		}
-		
-		td.userprediction { background: #e3f0f4; }
-		td.userpredictionchange { background: #ffa500; }
-	</style>
-	
-	<script type="text/javascript">
-	
-		$(document).ready (function () {			
-			var userpredictions = document.getElementsByClassName("userprediction");
-			for (var i=0; i<userpredictions.length; i++) {
-				userpredictions[i].addEventListener('focusout', updateScore, false);
-			}
-		})
-		
-		function updateScore () {
-			$("div#results").append("<p>Posting User/Game ID "  + this.id + " Value " + this.value + "</p>");
-			
-			var prediction = {}
-			prediction["id"] = this.id;
-			prediction["value"] = this.value;
-			
-			JSON.stringify(prediction);
-				
-			$.ajax({
-				type : "POST",
-				url : "/tournament/setPredictionString.html",
-				data : prediction,
-				timeout : 100000,
-				success : function(data) {
-					console.log("SUCCESS: ", data);
-					displayResult(data, "success");
-				},
-				error : function(e) {
-					console.log("ERROR: ", e);
-					displayResult(e, "error");
-				},
-				done : function(e) {
-					console.log("DONE");
-					displayResult(true, "done");
-				}
-			});
-		}
-		
-		function displayResult (result, from) {
-			$("div#results").append("<p>Ajax call made from "  + from + " Result " + result + "</p>");
-		}
-		
-	</script>
-	
+	<!-- <script src="<c:url value="/resources/js/predictionString.js" />" type="text/javascript"></script>  -->
+	<script src="<c:url value="/resources/js/prediction.js" />" type="text/javascript"></script>
+	<link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet">
 </head>
 <body>
 

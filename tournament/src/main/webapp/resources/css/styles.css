@@ -1,0 +1,23 @@
+table { color: #333; 
+	width: 98%;
+	border-collapse:
+	collapse; border-spacing: 0;
+}
+			
+td, th { border: 1px solid #CCC; 
+	height: 30px; } 
+		
+.firstcol { width: 100px; }
+		
+.noprediction { color: #C0C0C0; }
+			
+th { background: #F3F3F3; 
+	font-weight: bold;
+}
+			
+td { background: #FAFAFA;
+	text-align: center; 
+}
+		
+td.userprediction { background: #e3f0f4; }
+td.userpredictionchange { background: #ffa500; }

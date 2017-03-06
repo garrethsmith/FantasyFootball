@@ -1,5 +1,8 @@
 package com.fantasy.jsonmodel;
 
+// No longer needed at result submitted through String
+
+@Deprecated
 public class PredictionPojo {
 
 	private String id;

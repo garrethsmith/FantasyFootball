@@ -12,12 +12,25 @@ public class Prediction implements Serializable {
 	private int gameid;
 	private String prediction;
 	
+	public Prediction () {}
+	
+	public Prediction (int id, int gameid) {
+		this.id = id;
+		this.gameid = gameid;
+	}
+	
+	public Prediction (int id, int gameid, String prediction) {
+		this.id = id;
+		this.gameid = gameid;
+		this.prediction = prediction;
+	}
+	
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.name = name.trim();
 	}
 
 	public int getId() {
@@ -37,7 +50,7 @@ public class Prediction implements Serializable {
 	}
 	
 	public String getPrediction() {
-		return prediction;
+		return prediction.trim();
 	}
 	
 	public void setPrediction(String prediction) {
