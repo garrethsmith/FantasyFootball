@@ -18,10 +18,7 @@ public class PredictionAjaxController {
 	
 	PredictionDAO predictionDao;
 	PredictionValidator predictionValidator;
-	
-	//@RequestMapping(value = "/setPrediction.html", consumes = MediaType.APPLICATION_JSON_VALUE,
-	//	method = RequestMethod.POST, headers="Accept=application/json")
-	
+		
 	@RequestMapping (value = "/setPrediction.html", method = RequestMethod.POST)
 	public String setUserPrediction(@RequestBody String prediction, BindingResult result, Model model) {
 		JSONObject json = new JSONObject(prediction);		
@@ -33,12 +30,12 @@ public class PredictionAjaxController {
 		predictionValidator.validate(p, result);
 		
 		if (result.hasErrors())
-			return "Validation fail";
+			return "FAILURE: " + json.toString();
 		
 		if (predictionDao.updatePrediction(p))
-			return json.toString();
+			return "SUCCESS: " + json.toString();
 		
-		return "FAILURE";
+		return "FAILURE: " + json.toString();
 	}
 	
 	@RequestMapping (value = "/setPredictionString.html", method = RequestMethod.POST)

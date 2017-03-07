@@ -38,6 +38,7 @@ public class PredictionDAO {
 		String oldValue = p.getPrediction();
 		p.setPrediction(prediction.getPrediction());
 		tx.commit();
+		session.close();
 		
 		System.out.println("updatePrediction: prediction updated for user " + p.getId() + " game " + p.getGameid() + 
 				" from " + oldValue + " to " + prediction.getPrediction());

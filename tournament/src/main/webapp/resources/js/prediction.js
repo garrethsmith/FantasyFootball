@@ -12,9 +12,7 @@ function updateScore () {
 	prediction["id"] = this.id;
 	prediction["value"] = this.value;
 	
-	//var prediction = '{"id":"1","value":"2"}';
-	
-	$("div#results").append("<p>JSon  "  + prediction + "</p>");
+	showPageLog ("<p>JSon  "  + prediction + "</p>");
 
 	$.ajax({
 		type : "POST",
@@ -34,12 +32,32 @@ function updateScore () {
 			console.log("DONE");
 			displayResult(true, "done");
 		}
-	});
+	});  
 }
 
 function displayResult (result, from) {
-	$("div#results").append("<p>Ajax call made from "  + from + " Result " + result + "</p>");
-	result = JSON.parse(result);
-	$("div#results").append("<p>Object ID " + result.id + "</p>");
-	$('input#'+result.id).css("background-color", "red");	
+	showPageLog("<p>Ajax call made from " + from + " Result " + result + "</p>");
+	var returnVal = result.substring(0, result.indexOf(':'));
+	var json = result.substring(result.indexOf(':')+1);
+	result = JSON.parse(json);
+	if (from == "success" && returnVal == "SUCCESS") { flashResult ("#B4EEB4", result.id);}
+	else { flashResult ("#ffcccc", result.id);}
 }
+
+function flashResult (colour, id) {
+	$('input#'+id).css("background-color", colour);
+	$('input#'+id).fadeTo("slow", 0.5).fadeTo("slow", 1.0, function () {
+		$('input#'+id).css("background-color", "white");
+	});
+}
+
+function showPageLog (string) {
+	$("div#results").append(string);
+}
+
+
+
+
+
+
+
