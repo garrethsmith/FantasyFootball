@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import com.fantasy.dao.AccountDAO;
 import com.fantasy.dao.PredictionDAO;
 import com.fantasy.model.Account;
 import com.fantasy.model.Prediction;

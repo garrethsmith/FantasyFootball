@@ -9,7 +9,7 @@ public class Fixture {
 	private int gameid;
 	private String homeTeam;
 	private String awayTeam;
-	private Date kickOff;
+	private Date kickOff; // TODO: Date not being stored with time correctly
 	private String matchResult;
 	private String round;
 	private List<Prediction> predictions = new ArrayList<Prediction>();
