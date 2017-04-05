@@ -3,6 +3,8 @@ $(document).ready (function () {
 	for (var i=0; i<userpredictions.length; i++) {
 		userpredictions[i].addEventListener('focusout', updateScore, false);
 	}
+	
+	//blah blah
 })
 
 function updateScore () {

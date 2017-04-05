@@ -85,9 +85,12 @@
 							</c:forEach>
 						</table>
 						
-						<p>&nbsp;</p>
-						<div id="results"></div>
-						
+						<div class="row">  
+							<p>&nbsp;</p>
+							<button type="button" id="resetLog" class="btn btn-primary">Reset log</button>
+							<div id="results"></div>
+						</div>
+							
 		        	</article>
 		        </main>
 		    </div>

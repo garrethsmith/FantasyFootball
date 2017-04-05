@@ -1,5 +1,6 @@
 package com.fantasy.controllers;
 
+import org.hibernate.criterion.Restrictions;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -32,10 +33,13 @@ public class PredictionAjaxController {
 		if (result.hasErrors())
 			return "FAILURE: " + json.toString();
 		
-		if (predictionDao.updatePrediction(p))
+		if (!predictionDao.doesPredictionExist(p)) {
+			predictionDao.insertPrediction(p);
 			return "SUCCESS: " + json.toString();
-		
-		return "FAILURE: " + json.toString();
+		} else {
+			predictionDao.updatePrediction(p);
+			return "SUCCESS: " + json.toString();
+		}
 	}
 	
 	@RequestMapping (value = "/setPredictionString.html", method = RequestMethod.POST)

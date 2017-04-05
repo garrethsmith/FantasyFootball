@@ -50,7 +50,11 @@ public class Prediction implements Serializable {
 	}
 	
 	public String getPrediction() {
-		return prediction.trim();
+		if (prediction != null) {
+			return prediction.trim();
+		} else {
+			return null;
+		}
 	}
 	
 	public void setPrediction(String prediction) {

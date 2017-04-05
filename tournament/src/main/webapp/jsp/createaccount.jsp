@@ -24,15 +24,73 @@
 			<h1>Create new user account</h1>
 			
 			<form:form commandName="account" method="post" action="accountcreated.html">	
-				<p>First name: <form:input type="text" path="firstname" name="firstname" />
-				<form:errors path="firstname" cssClass="error" /></p>
-				<p>Surname: <form:input type="text" path="surname" name="surname" />
-				<form:errors path="surname" cssClass="error" /></p>
-				<p>Team name: <form:input type="text" path="teamname" name="teamname" />
-				<form:errors path="teamname" cssClass="error" /></p>
-				<p>email: <form:input type="text" path="email" name="email" />
-				<form:errors path="email" cssClass="error" /></p>
-				<p><input type="submit" value="create" /></p>
+				<div class="row">
+					<div class="col-xs-2">
+						<p>First name</p>
+					</div>
+					<div class="col-xs-10">
+						<p><form:input type="text" path="firstname" name="firstname" /></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-2">&nbsp;</div>
+					<div class="col-xs-10">
+						<p><form:errors path="firstname" cssClass="error" /></p>
+					</div>
+				</div>
+				
+				
+				<div class="row">
+					<div class="col-xs-2">
+						<p>Surname</p>
+					</div>
+					<div class="col-xs-10">
+						<p><form:input type="text" path="surname" name="surname" /></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-1">&nbsp;</div>
+					<div class="col-xs-11">
+						<p><form:errors path="surname" cssClass="error" /></p>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-xs-2">
+						<p>Team name</p>
+					</div>
+					<div class="col-xs-10">
+						<p><form:input type="text" path="teamname" name="teamname" /></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-2">&nbsp;</div>
+					<div class="col-xs-10">
+						<p><form:errors path="teamname" cssClass="error" /></p>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-xs-2">
+						<p>email</p>
+					</div>
+					<div class="col-xs-10">
+						<p><form:input type="text" path="email" name="email" /></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-2">&nbsp;</div>
+					<div class="col-xs-10">
+						<p><form:errors path="email" cssClass="error" /></p>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-xs-2">&nbsp;</div>
+					<div class="col-xs-10">
+						<p><input type="submit" value="create" /></p>
+					</div>
+				</div>
 			</form:form>
 		</main>
 	</div>

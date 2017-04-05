@@ -26,12 +26,49 @@
 			<div class="col-xs-12">
 			
 				<form:form commandName="login" method="post" action="displayFixtures.html">	
-					<p>Username: <form:input type="text" path="username" name="username" />
-					<form:errors path="username" cssClass="error" /></p>
-					<p>No password needed for now</p>
-					<p>Password: <form:input type="text" path="password" name="password" />
-					<form:errors path="password" cssClass="error" /></p>
-					<p><input type="submit" value="create" /></p>
+					<div class="row">
+						<div class="col-xs-1">
+							<p>Username:</p>
+						</div>
+						<div class="col-xs-11">
+							<p><form:input type="text" path="username" name="username" /></p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-1">&nbsp;</div>
+						<div class="col-xs-11">
+							<p><form:errors path="username" cssClass="error" /></p>
+						</div>
+					</div>
+						 
+					<div class="row ">
+						<div class="col-xs-1">&nbsp;</div>
+						<div class="col-xs-11">
+							<p>No password needed for now</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-1">
+							<p>Password:</p>
+						</div>
+						<div class="col-xs-11">
+							<p><form:input type="text" path="password" name="password" /></p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-1">&nbsp;</div>
+						<div class="col-xs-11">
+							<p><form:errors path="password" cssClass="error" /></p>
+						</div>
+					</div>
+					
+					
+					<div class="row">
+						<div class="col-xs-1">&nbsp;</div>
+						<div class="col-xs-11">
+							<p><input type="submit" value="Sign in" class="btn btn-primary" /></p>
+						</div>
+					</div>
 				</form:form>
 			
 			</div>
